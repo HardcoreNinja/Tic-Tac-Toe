@@ -13,12 +13,12 @@ const player = (playerName, playerIcon) => {
         "--", "--", "--",
         "--", "--", "--"
     ];
+    let blank = [];
+    let opponent = [];
+    let mine = [];
 
-    const analyzeMoves = () => {
+    const filterBoard = () => {
 
-        let blank = [];
-        let opponent = []
-        let mine = []
         for (let i = 0; i < moves.length; i++) {
             if (icon === "x") {
                 if (moves[i] === "x")
@@ -38,20 +38,31 @@ const player = (playerName, playerIcon) => {
                     blank.push(i);
             }
         }
+    }
+    const randomMove = () =>{
+        let squareID = parseInt(blank[getRandomInt(blank.length)]);
+        const square = document.getElementById(squareID);
+
+        if (icon === "x") {
+            square.style.backgroundImage = "url('x.svg')";
+            moves[squareID] = "x";
+        }
+        else {
+            square.style.backgroundImage = "url('o.svg')";
+            moves[squareID] = "o";
+        }
+    }
+
+
+
+    const analyzeMoves = () => {
+
+        filterBoard();
+
 
         if (opponent.length === 1) {
-
-            let squareID = parseInt(blank[getRandomInt(blank.length)]);
-            const square = document.getElementById(squareID);
-
-            if (AI.icon === "x") {
-                square.style.backgroundImage = "url('x.svg')";
-                AI.moves[squareID] = "x";
-            }
-            else {
-                square.style.backgroundImage = "url('o.svg')";
-                AI.moves[squareID] = "o";
-            }
+            randomMove();
+            
         }
         else {
             // Rows
@@ -62,39 +73,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(2)) {
                     const square = document.getElementById(2);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[2] = "x";
+                        moves[2] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[2] = "o";
+                        moves[2] = "o";
                     }
                 }
             }
             else if (opponent.includes(0) && opponent.includes(2)) {
                 if (blank.includes(1)) {
                     const square = document.getElementById(1);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[1] = "x";
+                        moves[1] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[1] = "o";
+                        moves[1] = "o";
                     }
                 }
             }
             else if (opponent.includes(1) && opponent.includes(2)) {
                 if (blank.includes(0)) {
                     const square = document.getElementById(0);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[0] = "x";
+                        moves[0] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[0] = "o";
+                        moves[0] = "o";
                     }
                 }
             }
@@ -107,39 +118,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(5)) {
                     const square = document.getElementById(5);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[5] = "x";
+                        moves[5] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[5] = "o";
+                        moves[5] = "o";
                     }
                 }
             }
             else if (opponent.includes(3) && opponent.includes(5)) {
                 if (blank.includes(4)) {
                     const square = document.getElementById(4);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[4] = "x";
+                        moves[4] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[4] = "o";
+                        moves[4] = "o";
                     }
                 }
             }
             else if (opponent.includes(4) && opponent.includes(5)) {
                 if (blank.includes(3)) {
                     const square = document.getElementById(3);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[3] = "x";
+                        moves[3] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[3] = "o";
+                        moves[3] = "o";
                     }
                 }
             }
@@ -152,39 +163,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(8)) {
                     const square = document.getElementById(8);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[8] = "x";
+                        moves[8] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[8] = "o";
+                        moves[8] = "o";
                     }
                 }
             }
             else if (opponent.includes(6) && opponent.includes(8)) {
                 if (blank.includes(7)) {
                     const square = document.getElementById(7);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[7] = "x";
+                        moves[7] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[7] = "o";
+                        moves[7] = "o";
                     }
                 }
             }
             else if (opponent.includes(7) && opponent.includes(8)) {
                 if (blank.includes(6)) {
                     const square = document.getElementById(6);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[6] = "x";
+                        moves[6] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[6] = "o";
+                        moves[6] = "o";
                     }
                 }
             }
@@ -197,39 +208,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(6)) {
                     const square = document.getElementById(6);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[6] = "x";
+                        moves[6] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[6] = "o";
+                        moves[6] = "o";
                     }
                 }
             }
             else if (opponent.includes(0) && opponent.includes(6)) {
                 if (blank.includes(3)) {
                     const square = document.getElementById(3);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[3] = "x";
+                        moves[3] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[3] = "o";
+                        moves[3] = "o";
                     }
                 }
             }
             else if (opponent.includes(3) && opponent.includes(6)) {
                 if (blank.includes(0)) {
                     const square = document.getElementById(0);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[0] = "x";
+                        moves[0] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[0] = "o";
+                        moves[0] = "o";
                     }
                 }
             }
@@ -241,39 +252,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(7)) {
                     const square = document.getElementById(7);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[7] = "x";
+                        moves[7] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[7] = "o";
+                        moves[7] = "o";
                     }
                 }
             }
             else if (opponent.includes(1) && opponent.includes(7)) {
                 if (blank.includes(4)) {
                     const square = document.getElementById(4);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[4] = "x";
+                        moves[4] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[4] = "o";
+                        moves[4] = "o";
                     }
                 }
             }
             else if (opponent.includes(4) && opponent.includes(7)) {
                 if (blank.includes(1)) {
                     const square = document.getElementById(1);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[1] = "x";
+                        moves[1] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[1] = "o";
+                        moves[1] = "o";
                     }
                 }
             }
@@ -285,39 +296,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(8)) {
                     const square = document.getElementById(8);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[8] = "x";
+                        moves[8] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[8] = "o";
+                        moves[8] = "o";
                     }
                 }
             }
             else if (opponent.includes(2) && opponent.includes(8)) {
                 if (blank.includes(5)) {
                     const square = document.getElementById(5);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[5] = "x";
+                        moves[5] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[5] = "o";
+                        moves[5] = "o";
                     }
                 }
             }
             else if (opponent.includes(5) && opponent.includes(8)) {
                 if (blank.includes(2)) {
                     const square = document.getElementById(2);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[2] = "x";
+                        moves[2] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[2] = "o";
+                        moves[2] = "o";
                     }
                 }
             }
@@ -330,39 +341,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(8)) {
                     const square = document.getElementById(8);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[8] = "x";
+                        moves[8] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[8] = "o";
+                        moves[8] = "o";
                     }
                 }
             }
             else if (opponent.includes(0) && opponent.includes(8)) {
                 if (blank.includes(4)) {
                     const square = document.getElementById(5);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[4] = "x";
+                        moves[4] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[4] = "o";
+                        moves[4] = "o";
                     }
                 }
             }
             else if (opponent.includes(4) && opponent.includes(8)) {
                 if (blank.includes(0)) {
                     const square = document.getElementById(0);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[0] = "x";
+                        moves[0] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[0] = "o";
+                        moves[0] = "o";
                     }
                 }
             }
@@ -374,39 +385,39 @@ const player = (playerName, playerIcon) => {
 
                 if (blank.includes(6)) {
                     const square = document.getElementById(6);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[6] = "x";
+                        moves[6] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[6] = "o";
+                        moves[6] = "o";
                     }
                 }
             }
             else if (opponent.includes(2) && opponent.includes(6)) {
                 if (blank.includes(4)) {
                     const square = document.getElementById(5);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
                         AI.moves[4] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[4] = "o";
+                        moves[4] = "o";
                     }
                 }
             }
             else if (opponent.includes(4) && opponent.includes(6)) {
                 if (blank.includes(2)) {
                     const square = document.getElementById(2);
-                    if (AI.icon === "x") {
+                    if (icon === "x") {
                         square.style.backgroundImage = "url('x.svg')";
-                        AI.moves[2] = "x";
+                        moves[2] = "x";
                     }
                     else {
                         square.style.backgroundImage = "url('o.svg')";
-                        AI.moves[2] = "o";
+                        moves[2] = "o";
                     }
                 }
             }
