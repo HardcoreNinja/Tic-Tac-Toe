@@ -29,6 +29,7 @@
     background: orange;
     display: flex;
     place-content: center center;
+    place-items: center center;
     flex-flow: column nowrap;
 }
 
