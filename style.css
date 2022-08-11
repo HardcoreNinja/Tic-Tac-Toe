@@ -38,6 +38,23 @@
     flex-flow: row wrap;
     max-width: 375px;
     max-height: 375px;
-    place-content: flex-start flex-start;
+    place-content: center center;
     background: magenta;
+}
+
+.container {
+    transition: 0.5s;
+    width: 123px;
+    height: 123px;
+    background: gray;
+    display: flex;
+    flex-flow: row nowrap;
+    place-content: center center;
+    place-items: center center;
+    background-size: cover;
+}
+
+.container:hover {
+    background: cyan;
+    background-size: cover;
 }

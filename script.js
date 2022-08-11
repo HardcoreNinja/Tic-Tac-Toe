@@ -1,3 +1,14 @@
+let playerTurn = true;
+
+function placeMarker() {
+
+    if (playerTurn)
+        this.style.backgroundImage = "url('o.svg')";
+    else
+        this.style.backgroundImage = "url('x.svg')"
+
+    playerTurn = !playerTurn;
+}
 
 function drawGrid() {
     const gridContainer = document.querySelector("#gridContainer");
@@ -5,10 +16,9 @@ function drawGrid() {
 
     for (let i = 0; i < maxSquares; i++) {
         let square = document.createElement('div');
-        square.style.display = "flex";
-        square.style.width = "123px";
-        square.style.height = "123px";
-        square.style.background = "magenta";
+        square.classList.add("container");
+        square.setAttribute("id", i);
+        square.addEventListener("mousedown", placeMarker);
 
         switch (i) {
             case 0:
@@ -22,12 +32,10 @@ function drawGrid() {
                 square.style.borderRight = "1px solid black";
                 square.style.borderBottom = "1px solid black";
                 break;
-
             case 4:
                 square.style.borderTop = "1px solid black";
                 square.style.borderBottom = "1px solid black";
                 break;
-
             case 5:
                 square.style.borderTop = "1px solid black";
                 square.style.borderLeft = "1px solid black";
