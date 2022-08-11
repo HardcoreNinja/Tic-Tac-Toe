@@ -5,11 +5,10 @@ const player = (playerName, playerIcon) => {
     let name = playerName;
     let icon = playerIcon;
     let score = 0;
-
     let moves = [
-        false, false, false,
-        false, false, false,
-        false, false, false
+        "--", "--", "--",
+        "--", "--", "--",
+        "--", "--", "--"
     ];
 
     return { name, icon, score, moves };
@@ -28,7 +27,7 @@ function AITurn() {
 
     let indexList = [];
     for (let i = 0; i < AI.moves.length; i++) {
-        if (AI.moves[i] === false)
+        if (AI.moves[i] === "--")
             indexList.push(i);
     }
 
@@ -37,18 +36,16 @@ function AITurn() {
     let squareID = parseInt(indexList[getRandomInt(indexList.length)]);
     const square = document.getElementById(squareID);
 
-    if (AI.icon === "x")
+    if (AI.icon === "x") {
         square.style.backgroundImage = "url('x.svg')";
-    else if (AI.icon === "o")
+        AI.moves[squareID] = "x";
+    }
+    else {
         square.style.backgroundImage = "url('o.svg')";
-
-    AI.moves[squareID] = true;
-
+        AI.moves[squareID] = "o";
+    }
     playerTurn = !playerTurn;
-
 }
-
-
 
 function placeMarker() {
 
@@ -56,17 +53,18 @@ function placeMarker() {
 
     if (playerTurn) {
 
-        if (player1.moves[this.id] === false) {
+        if (player1.moves[this.id] === "--") {
 
-            if (player1.icon === "x")
+            if (player1.icon === "x") {
                 this.style.backgroundImage = "url('x.svg')"
-            else
+                player1.moves[this.id] = "x";
+            }
+            else {
                 this.style.backgroundImage = "url('o.svg')";
-
-            player1.moves[this.id] = true;
+                player1.moves[this.id] = "o";
+            }
 
             playerTurn = !playerTurn;
-
             AITurn();
         }
         else {
@@ -113,7 +111,6 @@ function drawGrid() {
                 square.style.borderLeft = "1px solid black";
                 break;
         }
-
         gridContainer.appendChild(square);
     }
 }
