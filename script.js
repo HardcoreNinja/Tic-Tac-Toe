@@ -3,6 +3,16 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
+// Get the modal
+let modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+let modalCloseButton = document.getElementsByClassName("close")[0];
+modalCloseButton.onclick = function () {
+    modal.style.display = "none";
+}
+
+
 const player = (playerName, playerIcon) => {
 
     let name = playerName;
@@ -47,14 +57,16 @@ const player = (playerName, playerIcon) => {
         let squareID = parseInt(blank[getRandomInt(blank.length)]);
         const square = document.getElementById(squareID);
 
-        if (icon === "x") {
+        if (icon === "x")
             square.style.backgroundImage = "url('x.svg')";
-            moves[squareID] = "x";
-        }
-        else {
+        else
             square.style.backgroundImage = "url('o.svg')";
-            moves[squareID] = "o";
-        }
+
+        moves[squareID] = icon;
+    }
+
+    const wonGame = () => {
+        modal.style.display = "block";
     }
 
     const checkForDefensiveMoves = () => {
@@ -332,7 +344,336 @@ const player = (playerName, playerIcon) => {
         }
         else {
             alert("No Defensive Moves!");
+            randomMove();
         }
+    }
+
+    const checkForOffensiveMoves = () => {
+        // Row A
+        // 0 1  -> 2
+        if (mine.includes(0) && mine.includes(1) && blank.includes(2)) {
+
+            const square = document.getElementById(2);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[2] = icon;
+
+            wonGame();
+        }
+        // 0 2   ->  1 
+        else if (mine.includes(0) && mine.includes(2) && blank.includes(1)) {
+
+            const square = document.getElementById(1);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[1] = icon;
+
+            wonGame();
+        }
+        // 1 2  -> is 0 
+        else if (mine.includes(1) && mine.includes(2) && blank.includes(0)) {
+
+            const square = document.getElementById(0);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[0] = icon;
+
+            wonGame();
+        }
+        // Row B
+        // 3 4  -> 5
+        else if (mine.includes(3) && mine.includes(4) && blank.includes(5)) {
+
+            const square = document.getElementById(5);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[5] = icon;
+
+            wonGame();
+        }
+        // 3 5   ->  4 
+        else if (mine.includes(3) && mine.includes(5) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+
+            wonGame();
+        }
+        // 4 5  -> is 3 
+        else if (mine.includes(4) && mine.includes(5) && blank.includes(3)) {
+
+            const square = document.getElementById(3);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[3] = icon;
+
+            wonGame();
+        }
+        // Row C
+        // 6 7  -> 8
+        else if (mine.includes(6) && mine.includes(7) && blank.includes(8)) {
+
+            const square = document.getElementById(8);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[8] = icon;
+
+            wonGame();
+        }
+        // 6 8   ->  7 
+        else if (mine.includes(6) && mine.includes(8) && blank.includes(7)) {
+
+            const square = document.getElementById(7);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[7] = icon;
+
+            wonGame();
+        }
+        // 7 8  -> is 6 
+        else if (mine.includes(7) && mine.includes(8) && blank.includes(6)) {
+
+            const square = document.getElementById(6);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[6] = icon;
+
+            wonGame();
+        }
+        // Column A
+        // 0 3  -> 6
+        else if (mine.includes(0) && mine.includes(3) && blank.includes(6)) {
+
+            const square = document.getElementById(6);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[6] = icon;
+
+            wonGame();
+        }
+        // 0 6   ->  3 
+        else if (mine.includes(0) && mine.includes(6) && blank.includes(3)) {
+
+            const square = document.getElementById(3);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[3] = icon;
+
+            wonGame();
+        }
+        // 3 6  -> is 0 
+        else if (mine.includes(3) && mine.includes(6) && blank.includes(0)) {
+
+            const square = document.getElementById(0);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[0] = icon;
+
+            wonGame();
+        }
+        // Column B
+        // 1 4  -> 7
+        else if (mine.includes(1) && mine.includes(4) && blank.includes(7)) {
+
+            const square = document.getElementById(7);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[7] = icon;
+
+            wonGame();
+        }
+        // 1 7   ->  4 
+        else if (mine.includes(1) && mine.includes(7) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+
+            wonGame();
+        }
+        // 4 7  -> is 1 
+        else if (mine.includes(4) && mine.includes(7) && blank.includes(1)) {
+
+            const square = document.getElementById(1);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[1] = icon;
+
+            wonGame();
+        }
+        // Column C
+        // 2 5  -> 8
+        else if (mine.includes(2) && mine.includes(5) && blank.includes(8)) {
+
+            const square = document.getElementById(8);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[8] = icon;
+
+            wonGame();
+        }
+        // 2 8   ->  5 
+        else if (mine.includes(2) && mine.includes(8) && blank.includes(5)) {
+
+            const square = document.getElementById(5);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[5] = icon;
+
+            wonGame();
+        }
+        // 5 8  -> is 2 
+        else if (mine.includes(5) && mine.includes(8) && blank.includes(2)) {
+
+            const square = document.getElementById(2);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[2] = icon;
+
+            wonGame();
+        }
+        // Diagonal A
+        // 0 4  -> 8
+        else if (mine.includes(0) && mine.includes(4) && blank.includes(8)) {
+
+            const square = document.getElementById(8);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[8] = icon;
+
+            wonGame();
+        }
+        // 0 8   ->  4 
+        else if (mine.includes(0) && mine.includes(8) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+
+            wonGame();
+        }
+        // 4 8  -> is 0 
+        else if (mine.includes(4) && mine.includes(8) && blank.includes(0)) {
+
+            const square = document.getElementById(0);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[0] = icon;
+
+            wonGame();
+        }
+        // Diagonal B
+        // 2 4  -> 6
+        else if (mine.includes(2) && mine.includes(4) && blank.includes(6)) {
+
+            const square = document.getElementById(6);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[6] = icon;
+
+            wonGame();
+        }
+        // 2 6   ->  4 
+        else if (mine.includes(2) && mine.includes(6) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+
+            wonGame();
+        }
+        // 4 6  -> is 2 
+        else if (mine.includes(4) && mine.includes(6) && blank.includes(2)) {
+
+            const square = document.getElementById(2);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[2] = icon;
+
+            wonGame();
+        }
+        else {
+            alert("No Offensive Moves!");
+            checkForDefensiveMoves();
+        }
+
     }
 
     const analyzeMoves = () => {
@@ -342,7 +683,7 @@ const player = (playerName, playerIcon) => {
         if (opponent.length === 1)
             randomMove();
         else {
-            checkForDefensiveMoves();
+            checkForOffensiveMoves();
         }
 
     }
