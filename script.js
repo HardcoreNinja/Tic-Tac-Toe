@@ -1,4 +1,5 @@
 let playerTurn = true;
+let playerWon = false;
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -26,7 +27,7 @@ const player = (playerName, playerIcon) => {
     let blank = [];
     let opponent = [];
     let mine = [];
-    let won = false;
+
 
     const filterBoard = () => {
 
@@ -69,7 +70,7 @@ const player = (playerName, playerIcon) => {
 
     const wonGame = () => {
         modal.style.display = "block";
-        won = true;
+        playerWon = true;
     }
 
     const checkForDefensiveMoves = () => {
@@ -732,16 +733,18 @@ const player = (playerName, playerIcon) => {
         }
     }
 
-    return { name, icon, score, moves, won, analyzeMoves, checkForWinningMoves };
+    return { name, icon, score, moves, analyzeMoves, checkForWinningMoves };
 }
 const player1 = player("Wake", "x");
 const AI = player("AI", "o");
 
 function AITurn() {
 
-    AI.moves = player1.moves;
-    AI.analyzeMoves();
-    playerTurn = !playerTurn;
+    if (!playerWon) {
+        AI.moves = player1.moves;
+        AI.analyzeMoves();
+        playerTurn = !playerTurn;
+    }
 }
 
 function placeMarker() {
@@ -768,7 +771,6 @@ function placeMarker() {
         else {
             alert("Can't Move There!");
         }
-
     }
 }
 
