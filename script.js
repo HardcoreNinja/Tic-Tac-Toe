@@ -19,6 +19,10 @@ const player = (playerName, playerIcon) => {
 
     const filterBoard = () => {
 
+        blank = [];
+        opponent = [];
+        mine = [];
+
         for (let i = 0; i < moves.length; i++) {
             if (icon === "x") {
                 if (moves[i] === "x")
@@ -54,361 +58,280 @@ const player = (playerName, playerIcon) => {
     }
 
     const checkForDefensiveMoves = () => {
-        // Rows
-        // 0 1  -> is 2 blank ? place : don't
-        // 0 2   -> is 1 blank ? place : don't
-        // 1 2  -> is 0 blank ? place : don't
-        if (opponent.includes(0) && opponent.includes(1)) {
+        // Row A
+        // 0 1  -> 2
+        if (opponent.includes(0) && opponent.includes(1) && blank.includes(2)) {
 
-            if (blank.includes(2)) {
-                const square = document.getElementById(2);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[2] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[2] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(0) && opponent.includes(2)) {
-            if (blank.includes(1)) {
-                const square = document.getElementById(1);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[1] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[1] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(1) && opponent.includes(2)) {
-            if (blank.includes(0)) {
-                const square = document.getElementById(0);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[0] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[0] = "o";
-                }
-            }
-        }
+            const square = document.getElementById(2);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
+            moves[2] = icon;
+        }
+        // 0 2   ->  1 
+        else if (opponent.includes(0) && opponent.includes(2) && blank.includes(1)) {
 
-        // 3 4  -> is 5 blank ? place : don't
-        // 3 5  -> is 4 blank ? place : don't
-        // 4 5  -> is 3 blank ? place : don't
-        if (opponent.includes(3) && opponent.includes(4)) {
+            const square = document.getElementById(1);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-            if (blank.includes(5)) {
-                const square = document.getElementById(5);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[5] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[5] = "o";
-                }
-            }
+            moves[1] = icon;
         }
-        else if (opponent.includes(3) && opponent.includes(5)) {
-            if (blank.includes(4)) {
-                const square = document.getElementById(4);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[4] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[4] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(4) && opponent.includes(5)) {
-            if (blank.includes(3)) {
-                const square = document.getElementById(3);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[3] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[3] = "o";
-                }
-            }
-        }
+        // 1 2  -> is 0 
+        else if (opponent.includes(1) && opponent.includes(2) && blank.includes(0)) {
 
+            const square = document.getElementById(0);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-        // 6 7  -> is 8  blank ? place : don't
-        // 6 8   -> is 7 blank ? place : don't
-        // 7 8  -> is 6 blank ? place : don't
-        else if (opponent.includes(6) && opponent.includes(7)) {
+            moves[0] = icon;
+        }
+        // Row B
+        // 3 4  -> 5
+        else if (opponent.includes(3) && opponent.includes(4) && blank.includes(5)) {
 
-            if (blank.includes(8)) {
-                const square = document.getElementById(8);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[8] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[8] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(6) && opponent.includes(8)) {
-            if (blank.includes(7)) {
-                const square = document.getElementById(7);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[7] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[7] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(7) && opponent.includes(8)) {
-            if (blank.includes(6)) {
-                const square = document.getElementById(6);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[6] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[6] = "o";
-                }
-            }
-        }
+            const square = document.getElementById(5);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-        // Columns
-        // 0 3   -> is  6 blank ? place : don't
-        // 0 6   -> is 3 blank ? place : don't
-        // 3 6  -> is 0 blank ? place : don't
-        else if (opponent.includes(0) && opponent.includes(3)) {
+            moves[5] = icon;
+        }
+        // 3 5   ->  4 
+        else if (opponent.includes(3) && opponent.includes(5) && blank.includes(4)) {
 
-            if (blank.includes(6)) {
-                const square = document.getElementById(6);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[6] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[6] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(0) && opponent.includes(6)) {
-            if (blank.includes(3)) {
-                const square = document.getElementById(3);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[3] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[3] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(3) && opponent.includes(6)) {
-            if (blank.includes(0)) {
-                const square = document.getElementById(0);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[0] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[0] = "o";
-                }
-            }
-        }
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-        // 1 4  -> is 7 blank ? place : don't
-        // 1 7  -> is 4 blank ? place : don't
-        // 4 7  -> is 1 blank ? place : don't
-        else if (opponent.includes(1) && opponent.includes(4)) {
+            moves[4] = icon;
+        }
+        // 4 5  -> is 3 
+        else if (opponent.includes(4) && opponent.includes(5) && blank.includes(3)) {
 
-            if (blank.includes(7)) {
-                const square = document.getElementById(7);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[7] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[7] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(1) && opponent.includes(7)) {
-            if (blank.includes(4)) {
-                const square = document.getElementById(4);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[4] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[4] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(4) && opponent.includes(7)) {
-            if (blank.includes(1)) {
-                const square = document.getElementById(1);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[1] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[1] = "o";
-                }
-            }
-        }
+            const square = document.getElementById(3);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-        // 2 5 -> is 8 blank ? place : don't
-        // 2 8 -> is 5 blank ? place : don't
-        // 5 8 -> is 2 blank ? place : don't
-        else if (opponent.includes(2) && opponent.includes(5)) {
+            moves[3] = icon;
+        }
+        // Row C
+        // 6 7  -> 8
+        else if (opponent.includes(6) && opponent.includes(7) && blank.includes(8)) {
 
-            if (blank.includes(8)) {
-                const square = document.getElementById(8);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[8] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[8] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(2) && opponent.includes(8)) {
-            if (blank.includes(5)) {
-                const square = document.getElementById(5);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[5] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[5] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(5) && opponent.includes(8)) {
-            if (blank.includes(2)) {
-                const square = document.getElementById(2);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[2] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[2] = "o";
-                }
-            }
-        }
+            const square = document.getElementById(8);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-        // Diagonal
-        // 0 4  -> is 8 blank ? place : don't
-        // 0 8 -> is 4 blank ? place : don't
-        // 4 8 -> is 0 blank ? place : don't
-        else if (opponent.includes(0) && opponent.includes(4)) {
+            moves[8] = icon;
+        }
+        // 6 8   ->  7 
+        else if (opponent.includes(6) && opponent.includes(8) && blank.includes(7)) {
 
-            if (blank.includes(8)) {
-                const square = document.getElementById(8);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[8] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[8] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(0) && opponent.includes(8)) {
-            if (blank.includes(4)) {
-                const square = document.getElementById(5);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[4] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[4] = "o";
-                }
-            }
-        }
-        else if (opponent.includes(4) && opponent.includes(8)) {
-            if (blank.includes(0)) {
-                const square = document.getElementById(0);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[0] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[0] = "o";
-                }
-            }
-        }
+            const square = document.getElementById(7);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
 
-        // 2 4 -> is 6 blank ? place : don't
-        // 2 6  -> is 4 blank ? place : don't
-        // 4 6 -> is 2 blank ? place : don't
-        else if (opponent.includes(2) && opponent.includes(4)) {
+            moves[7] = icon;
+        }
+        // 7 8  -> is 6 
+        else if (opponent.includes(7) && opponent.includes(8) && blank.includes(6)) {
 
-            if (blank.includes(6)) {
-                const square = document.getElementById(6);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[6] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[6] = "o";
-                }
-            }
+            const square = document.getElementById(6);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[6] = icon;
         }
-        else if (opponent.includes(2) && opponent.includes(6)) {
-            if (blank.includes(4)) {
-                const square = document.getElementById(5);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    AI.moves[4] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[4] = "o";
-                }
-            }
+        // Column A
+        // 0 3  -> 6
+        else if (opponent.includes(0) && opponent.includes(3) && blank.includes(6)) {
+
+            const square = document.getElementById(6);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[6] = icon;
         }
-        else if (opponent.includes(4) && opponent.includes(6)) {
-            if (blank.includes(2)) {
-                const square = document.getElementById(2);
-                if (icon === "x") {
-                    square.style.backgroundImage = "url('x.svg')";
-                    moves[2] = "x";
-                }
-                else {
-                    square.style.backgroundImage = "url('o.svg')";
-                    moves[2] = "o";
-                }
-            }
+        // 0 6   ->  3 
+        else if (opponent.includes(0) && opponent.includes(6) && blank.includes(3)) {
+
+            const square = document.getElementById(3);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[3] = icon;
+        }
+        // 3 6  -> is 0 
+        else if (opponent.includes(3) && opponent.includes(6) && blank.includes(0)) {
+
+            const square = document.getElementById(0);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[0] = icon;
+        }
+        // Column B
+        // 1 4  -> 7
+        else if (opponent.includes(1) && opponent.includes(4) && blank.includes(7)) {
+
+            const square = document.getElementById(7);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[7] = icon;
+        }
+        // 1 7   ->  4 
+        else if (opponent.includes(1) && opponent.includes(7) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+        }
+        // 4 7  -> is 1 
+        else if (opponent.includes(4) && opponent.includes(7) && blank.includes(1)) {
+
+            const square = document.getElementById(1);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[1] = icon;
+        }
+        // Column C
+        // 2 5  -> 8
+        else if (opponent.includes(2) && opponent.includes(5) && blank.includes(8)) {
+
+            const square = document.getElementById(8);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[8] = icon;
+        }
+        // 2 8   ->  5 
+        else if (opponent.includes(2) && opponent.includes(8) && blank.includes(5)) {
+
+            const square = document.getElementById(5);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[5] = icon;
+        }
+        // 5 8  -> is 2 
+        else if (opponent.includes(5) && opponent.includes(8) && blank.includes(2)) {
+
+            const square = document.getElementById(2);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[2] = icon;
+        }
+        // Diagonal A
+        // 0 4  -> 8
+        else if (opponent.includes(0) && opponent.includes(4) && blank.includes(8)) {
+
+            const square = document.getElementById(8);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[8] = icon;
+        }
+        // 0 8   ->  4 
+        else if (opponent.includes(0) && opponent.includes(8) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+        }
+        // 4 8  -> is 0 
+        else if (opponent.includes(4) && opponent.includes(8) && blank.includes(0)) {
+
+            const square = document.getElementById(0);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[0] = icon;
+        }
+        // Diagonal B
+        // 2 4  -> 6
+        else if (opponent.includes(2) && opponent.includes(4) && blank.includes(6)) {
+
+            const square = document.getElementById(6);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[6] = icon;
+        }
+        // 2 6   ->  4 
+        else if (opponent.includes(2) && opponent.includes(6) && blank.includes(4)) {
+
+            const square = document.getElementById(4);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[4] = icon;
+        }
+        // 4 6  -> is 2 
+        else if (opponent.includes(4) && opponent.includes(6) && blank.includes(2)) {
+
+            const square = document.getElementById(2);
+            if (icon === "x")
+                square.style.backgroundImage = "url('x.svg')";
+            else
+                square.style.backgroundImage = "url('o.svg')";
+
+            moves[2] = icon;
+        }
+        else {
+            alert("No Defensive Moves!");
         }
     }
 
