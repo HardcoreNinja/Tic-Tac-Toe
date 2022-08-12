@@ -26,6 +26,7 @@ const player = (playerName, playerIcon) => {
     let blank = [];
     let opponent = [];
     let mine = [];
+    let won = false;
 
     const filterBoard = () => {
 
@@ -34,6 +35,7 @@ const player = (playerName, playerIcon) => {
         mine = [];
 
         for (let i = 0; i < moves.length; i++) {
+
             if (icon === "x") {
                 if (moves[i] === "x")
                     mine.push(i);
@@ -67,6 +69,7 @@ const player = (playerName, playerIcon) => {
 
     const wonGame = () => {
         modal.style.display = "block";
+        won = true;
     }
 
     const checkForDefensiveMoves = () => {
@@ -105,7 +108,7 @@ const player = (playerName, playerIcon) => {
             moves[0] = icon;
         }
         // Row B
-        // 3 4  -> 5
+        // 3 4 -> 5
         else if (opponent.includes(3) && opponent.includes(4) && blank.includes(5)) {
 
             const square = document.getElementById(5);
@@ -116,7 +119,7 @@ const player = (playerName, playerIcon) => {
 
             moves[5] = icon;
         }
-        // 3 5   ->  4 
+        // 3 5 -> 4 
         else if (opponent.includes(3) && opponent.includes(5) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -127,7 +130,7 @@ const player = (playerName, playerIcon) => {
 
             moves[4] = icon;
         }
-        // 4 5  -> is 3 
+        // 4 5 -> 3 
         else if (opponent.includes(4) && opponent.includes(5) && blank.includes(3)) {
 
             const square = document.getElementById(3);
@@ -139,7 +142,7 @@ const player = (playerName, playerIcon) => {
             moves[3] = icon;
         }
         // Row C
-        // 6 7  -> 8
+        // 6 7 -> 8
         else if (opponent.includes(6) && opponent.includes(7) && blank.includes(8)) {
 
             const square = document.getElementById(8);
@@ -150,7 +153,7 @@ const player = (playerName, playerIcon) => {
 
             moves[8] = icon;
         }
-        // 6 8   ->  7 
+        // 6 8 -> 7 
         else if (opponent.includes(6) && opponent.includes(8) && blank.includes(7)) {
 
             const square = document.getElementById(7);
@@ -161,7 +164,7 @@ const player = (playerName, playerIcon) => {
 
             moves[7] = icon;
         }
-        // 7 8  -> is 6 
+        // 7 8 -> 6 
         else if (opponent.includes(7) && opponent.includes(8) && blank.includes(6)) {
 
             const square = document.getElementById(6);
@@ -173,7 +176,7 @@ const player = (playerName, playerIcon) => {
             moves[6] = icon;
         }
         // Column A
-        // 0 3  -> 6
+        // 0 3 -> 6
         else if (opponent.includes(0) && opponent.includes(3) && blank.includes(6)) {
 
             const square = document.getElementById(6);
@@ -184,7 +187,7 @@ const player = (playerName, playerIcon) => {
 
             moves[6] = icon;
         }
-        // 0 6   ->  3 
+        // 0 6 -> 3 
         else if (opponent.includes(0) && opponent.includes(6) && blank.includes(3)) {
 
             const square = document.getElementById(3);
@@ -195,7 +198,7 @@ const player = (playerName, playerIcon) => {
 
             moves[3] = icon;
         }
-        // 3 6  -> is 0 
+        // 3 6 -> 0 
         else if (opponent.includes(3) && opponent.includes(6) && blank.includes(0)) {
 
             const square = document.getElementById(0);
@@ -207,7 +210,7 @@ const player = (playerName, playerIcon) => {
             moves[0] = icon;
         }
         // Column B
-        // 1 4  -> 7
+        // 1 4 -> 7
         else if (opponent.includes(1) && opponent.includes(4) && blank.includes(7)) {
 
             const square = document.getElementById(7);
@@ -218,7 +221,7 @@ const player = (playerName, playerIcon) => {
 
             moves[7] = icon;
         }
-        // 1 7   ->  4 
+        // 1 7 -> 4 
         else if (opponent.includes(1) && opponent.includes(7) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -229,7 +232,7 @@ const player = (playerName, playerIcon) => {
 
             moves[4] = icon;
         }
-        // 4 7  -> is 1 
+        // 4 7 -> 1 
         else if (opponent.includes(4) && opponent.includes(7) && blank.includes(1)) {
 
             const square = document.getElementById(1);
@@ -241,7 +244,7 @@ const player = (playerName, playerIcon) => {
             moves[1] = icon;
         }
         // Column C
-        // 2 5  -> 8
+        // 2 5 -> 8
         else if (opponent.includes(2) && opponent.includes(5) && blank.includes(8)) {
 
             const square = document.getElementById(8);
@@ -252,7 +255,7 @@ const player = (playerName, playerIcon) => {
 
             moves[8] = icon;
         }
-        // 2 8   ->  5 
+        // 2 8 -> 5 
         else if (opponent.includes(2) && opponent.includes(8) && blank.includes(5)) {
 
             const square = document.getElementById(5);
@@ -263,7 +266,7 @@ const player = (playerName, playerIcon) => {
 
             moves[5] = icon;
         }
-        // 5 8  -> is 2 
+        // 5 8 -> 2 
         else if (opponent.includes(5) && opponent.includes(8) && blank.includes(2)) {
 
             const square = document.getElementById(2);
@@ -275,7 +278,7 @@ const player = (playerName, playerIcon) => {
             moves[2] = icon;
         }
         // Diagonal A
-        // 0 4  -> 8
+        // 0 4 -> 8
         else if (opponent.includes(0) && opponent.includes(4) && blank.includes(8)) {
 
             const square = document.getElementById(8);
@@ -286,7 +289,7 @@ const player = (playerName, playerIcon) => {
 
             moves[8] = icon;
         }
-        // 0 8   ->  4 
+        // 0 8 -> 4 
         else if (opponent.includes(0) && opponent.includes(8) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -297,7 +300,7 @@ const player = (playerName, playerIcon) => {
 
             moves[4] = icon;
         }
-        // 4 8  -> is 0 
+        // 4 8 -> 0 
         else if (opponent.includes(4) && opponent.includes(8) && blank.includes(0)) {
 
             const square = document.getElementById(0);
@@ -309,7 +312,7 @@ const player = (playerName, playerIcon) => {
             moves[0] = icon;
         }
         // Diagonal B
-        // 2 4  -> 6
+        // 2 4 -> 6
         else if (opponent.includes(2) && opponent.includes(4) && blank.includes(6)) {
 
             const square = document.getElementById(6);
@@ -320,7 +323,7 @@ const player = (playerName, playerIcon) => {
 
             moves[6] = icon;
         }
-        // 2 6   ->  4 
+        // 2 6 -> 4 
         else if (opponent.includes(2) && opponent.includes(6) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -331,7 +334,7 @@ const player = (playerName, playerIcon) => {
 
             moves[4] = icon;
         }
-        // 4 6  -> is 2 
+        // 4 6 -> 2 
         else if (opponent.includes(4) && opponent.includes(6) && blank.includes(2)) {
 
             const square = document.getElementById(2);
@@ -343,14 +346,14 @@ const player = (playerName, playerIcon) => {
             moves[2] = icon;
         }
         else {
-            alert("No Defensive Moves!");
+            //alert("No Defensive Moves!");
             randomMove();
         }
     }
 
     const checkForOffensiveMoves = () => {
         // Row A
-        // 0 1  -> 2
+        // 0 1 -> 2
         if (mine.includes(0) && mine.includes(1) && blank.includes(2)) {
 
             const square = document.getElementById(2);
@@ -363,7 +366,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 0 2   ->  1 
+        // 0 2 -> 1 
         else if (mine.includes(0) && mine.includes(2) && blank.includes(1)) {
 
             const square = document.getElementById(1);
@@ -376,7 +379,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 1 2  -> is 0 
+        // 1 2 -> 0 
         else if (mine.includes(1) && mine.includes(2) && blank.includes(0)) {
 
             const square = document.getElementById(0);
@@ -390,7 +393,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Row B
-        // 3 4  -> 5
+        // 3 4 -> 5
         else if (mine.includes(3) && mine.includes(4) && blank.includes(5)) {
 
             const square = document.getElementById(5);
@@ -403,7 +406,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 3 5   ->  4 
+        // 3 5 -> 4 
         else if (mine.includes(3) && mine.includes(5) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -416,7 +419,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 4 5  -> is 3 
+        // 4 5 -> 3 
         else if (mine.includes(4) && mine.includes(5) && blank.includes(3)) {
 
             const square = document.getElementById(3);
@@ -430,7 +433,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Row C
-        // 6 7  -> 8
+        // 6 7 -> 8
         else if (mine.includes(6) && mine.includes(7) && blank.includes(8)) {
 
             const square = document.getElementById(8);
@@ -443,7 +446,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 6 8   ->  7 
+        // 6 8 -> 7 
         else if (mine.includes(6) && mine.includes(8) && blank.includes(7)) {
 
             const square = document.getElementById(7);
@@ -456,7 +459,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 7 8  -> is 6 
+        // 7 8 -> 6 
         else if (mine.includes(7) && mine.includes(8) && blank.includes(6)) {
 
             const square = document.getElementById(6);
@@ -470,7 +473,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Column A
-        // 0 3  -> 6
+        // 0 3 -> 6
         else if (mine.includes(0) && mine.includes(3) && blank.includes(6)) {
 
             const square = document.getElementById(6);
@@ -483,7 +486,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 0 6   ->  3 
+        // 0 6 -> 3 
         else if (mine.includes(0) && mine.includes(6) && blank.includes(3)) {
 
             const square = document.getElementById(3);
@@ -496,7 +499,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 3 6  -> is 0 
+        // 3 6 -> 0 
         else if (mine.includes(3) && mine.includes(6) && blank.includes(0)) {
 
             const square = document.getElementById(0);
@@ -510,7 +513,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Column B
-        // 1 4  -> 7
+        // 1 4 -> 7
         else if (mine.includes(1) && mine.includes(4) && blank.includes(7)) {
 
             const square = document.getElementById(7);
@@ -523,7 +526,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 1 7   ->  4 
+        // 1 7 -> 4 
         else if (mine.includes(1) && mine.includes(7) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -536,7 +539,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 4 7  -> is 1 
+        // 4 7 -> 1 
         else if (mine.includes(4) && mine.includes(7) && blank.includes(1)) {
 
             const square = document.getElementById(1);
@@ -550,7 +553,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Column C
-        // 2 5  -> 8
+        // 2 5 -> 8
         else if (mine.includes(2) && mine.includes(5) && blank.includes(8)) {
 
             const square = document.getElementById(8);
@@ -563,7 +566,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 2 8   ->  5 
+        // 2 8 -> 5 
         else if (mine.includes(2) && mine.includes(8) && blank.includes(5)) {
 
             const square = document.getElementById(5);
@@ -576,7 +579,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 5 8  -> is 2 
+        // 5 8 -> 2 
         else if (mine.includes(5) && mine.includes(8) && blank.includes(2)) {
 
             const square = document.getElementById(2);
@@ -590,7 +593,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Diagonal A
-        // 0 4  -> 8
+        // 0 4 -> 8
         else if (mine.includes(0) && mine.includes(4) && blank.includes(8)) {
 
             const square = document.getElementById(8);
@@ -603,7 +606,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 0 8   ->  4 
+        // 0 8 -> 4 
         else if (mine.includes(0) && mine.includes(8) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -616,7 +619,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 4 8  -> is 0 
+        // 4 8 -> 0 
         else if (mine.includes(4) && mine.includes(8) && blank.includes(0)) {
 
             const square = document.getElementById(0);
@@ -630,7 +633,7 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         // Diagonal B
-        // 2 4  -> 6
+        // 2 4 -> 6
         else if (mine.includes(2) && mine.includes(4) && blank.includes(6)) {
 
             const square = document.getElementById(6);
@@ -643,7 +646,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 2 6   ->  4 
+        // 2 6 -> 4 
         else if (mine.includes(2) && mine.includes(6) && blank.includes(4)) {
 
             const square = document.getElementById(4);
@@ -656,7 +659,7 @@ const player = (playerName, playerIcon) => {
 
             wonGame();
         }
-        // 4 6  -> is 2 
+        // 4 6 -> 2 
         else if (mine.includes(4) && mine.includes(6) && blank.includes(2)) {
 
             const square = document.getElementById(2);
@@ -670,25 +673,66 @@ const player = (playerName, playerIcon) => {
             wonGame();
         }
         else {
-            alert("No Offensive Moves!");
+            //alert("No Offensive Moves!");
             checkForDefensiveMoves();
         }
+    }
 
+    const checkForWinningMoves = (moves) => {
+
+        mine = [];
+        for (let i = 0; i < moves.length; i++) {
+
+            if (moves[i] === icon)
+                mine.push(i);
+        }
+
+        // Row A
+        // 0 1 2
+        if ((mine.includes(0) && mine.includes(1) && mine.includes(2)))
+            wonGame();
+        // Row B
+        // 3 4 5
+        else if (mine.includes(3) && mine.includes(4) && mine.includes(5))
+            wonGame();
+        // Row C
+        // 6 7 8 
+        else if (mine.includes(6) && mine.includes(7) && mine.includes(8))
+            wonGame();
+
+        // Column A
+        // 0 3 6
+        else if (mine.includes(0) && mine.includes(3) && mine.includes(6))
+            wonGame();
+        // Column B
+        // 1 4 7
+        else if (mine.includes(1) && mine.includes(4) && mine.includes(7))
+            wonGame();
+        // Column C
+        // 2 5 8
+        else if (mine.includes(2) && mine.includes(5) && mine.includes(8))
+            wonGame();
+
+        // Diagonal A
+        // 0 4 8
+        else if (mine.includes(0) && mine.includes(4) && mine.includes(8))
+            wonGame();
+        // Diagonal B
+        // 2 4 6
+        else if (mine.includes(2) && mine.includes(4) && mine.includes(6))
+            wonGame();
     }
 
     const analyzeMoves = () => {
-
         filterBoard();
-
         if (opponent.length === 1)
             randomMove();
         else {
             checkForOffensiveMoves();
         }
-
     }
 
-    return { name, icon, score, moves, analyzeMoves };
+    return { name, icon, score, moves, won, analyzeMoves, checkForWinningMoves };
 }
 const player1 = player("Wake", "x");
 const AI = player("AI", "o");
@@ -696,27 +740,6 @@ const AI = player("AI", "o");
 function AITurn() {
 
     AI.moves = player1.moves;
-
-    // let indexList = [];
-    // for (let i = 0; i < AI.moves.length; i++) {
-    //     if (AI.moves[i] === "--")
-    //         indexList.push(i);
-    // }
-
-    // console.table(indexList);
-
-    // let squareID = parseInt(indexList[getRandomInt(indexList.length)]);
-    // const square = document.getElementById(squareID);
-
-    // if (AI.icon === "x") {
-    //     square.style.backgroundImage = "url('x.svg')";
-    //     AI.moves[squareID] = "x";
-    // }
-    // else {
-    //     square.style.backgroundImage = "url('o.svg')";
-    //     AI.moves[squareID] = "o";
-    // }
-
     AI.analyzeMoves();
     playerTurn = !playerTurn;
 }
@@ -729,21 +752,23 @@ function placeMarker() {
 
         if (player1.moves[this.id] === "--") {
 
-            if (player1.icon === "x") {
+            if (player1.icon === "x")
                 this.style.backgroundImage = "url('x.svg')"
-                player1.moves[this.id] = "x";
-            }
-            else {
+            else
                 this.style.backgroundImage = "url('o.svg')";
-                player1.moves[this.id] = "o";
-            }
+
+            player1.moves[this.id] = player1.icon;
+
+            player1.checkForWinningMoves(player1.moves);
 
             playerTurn = !playerTurn;
             AITurn();
+
         }
         else {
             alert("Can't Move There!");
         }
+
     }
 }
 
