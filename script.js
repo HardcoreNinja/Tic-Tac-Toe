@@ -756,7 +756,7 @@ function placeMarker() {
         if (player1.moves[this.id] === "--") {
 
             if (player1.icon === "x")
-                this.style.backgroundImage = "url('x.svg')"
+                this.style.backgroundImage = "url('x.svg')";
             else
                 this.style.backgroundImage = "url('o.svg')";
 
@@ -781,6 +781,7 @@ function drawGrid() {
     for (let i = 0; i < maxSquares; i++) {
         let square = document.createElement('div');
         square.classList.add("container");
+        square.style.backgroundImage = "url('blank.svg')";
         square.setAttribute("id", i);
         square.addEventListener("mousedown", placeMarker);
 
