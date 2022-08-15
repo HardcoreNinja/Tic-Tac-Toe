@@ -770,7 +770,6 @@ function placeMarker() {
 
             playerTurn = !playerTurn;
             AITurn();
-
         }
         else {
             alert("Can't Move There!");

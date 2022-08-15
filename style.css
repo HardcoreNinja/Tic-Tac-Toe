@@ -7,6 +7,11 @@
     font-family: "Lato";
     margin: 0px;
     padding: 0px;
+    color: rgb(214, 0, 107);
+}
+
+:root {
+    background: rgb(36, 41, 46);
 }
 
 #container {
@@ -16,7 +21,8 @@
         "navContainer"
         "contentContainer"
     ;
-    min-height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
 }
 
 #navContainer {
@@ -24,8 +30,18 @@
     background: rgba(40, 40, 40, .9);
     display: flex;
     place-content: center center;
-    gap: 20px;
-    padding: 20px;
+    place-items: center center;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+#navContainer>h1 {
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+#navContainer>.push {
+    margin-left: auto;
 }
 
 #navContainer>button {
@@ -35,8 +51,6 @@
     background: rgb(29, 33, 37);
     border: 1px solid rgb(214, 0, 107);
     transition: 0.5s;
-
-
 }
 
 #navContainer>button:hover {
@@ -120,7 +134,8 @@
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
     margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;
