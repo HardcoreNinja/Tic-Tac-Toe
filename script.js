@@ -56,6 +56,9 @@ const player = (playerName, playerIcon) => {
             }
         }
     }
+    const changeIcon = (newIcon) => {
+        icon = newIcon;
+    }
     const randomMove = () => {
         let squareID = parseInt(blank[getRandomInt(blank.length)]);
         const square = document.getElementById(squareID);
@@ -733,8 +736,9 @@ const player = (playerName, playerIcon) => {
         }
     }
 
-    return { name, icon, score, moves, analyzeMoves, checkForWinningMoves };
+    return { name, icon, score, moves, analyzeMoves, checkForWinningMoves, changeIcon };
 }
+
 const player1 = player("Wake", "x");
 const AI = player("AI", "o");
 
@@ -771,6 +775,17 @@ function placeMarker() {
         else {
             alert("Can't Move There!");
         }
+    }
+}
+
+function changeIcon() {
+    if (this.getAttribute("id") === "x") {
+        player1.icon = "x";
+        AI.changeIcon("o");
+    }
+    else if (this.getAttribute("id") === "o") {
+        player1.icon = "o";
+        AI.changeIcon("x")
     }
 }
 
@@ -815,6 +830,9 @@ function drawGrid() {
         }
         gridContainer.appendChild(square);
     }
+
+    const buttons = document.querySelectorAll(".iconButtons")
+    buttons.forEach(button => button.addEventListener("mousedown", changeIcon));
 }
 
 window.onload = drawGrid();
