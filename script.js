@@ -787,30 +787,30 @@ function drawGrid() {
 
         switch (i) {
             case 0:
-                square.style.borderRight = "1px solid black";
+                square.style.borderRight = "1px solid rgb(214, 0, 107)";
                 break;
             case 2:
-                square.style.borderLeft = "1px solid black";
+                square.style.borderLeft = "1px solid rgb(214, 0, 107)";
                 break;
             case 3:
-                square.style.borderTop = "1px solid black";
-                square.style.borderRight = "1px solid black";
-                square.style.borderBottom = "1px solid black";
+                square.style.borderTop = "1px solid rgb(214, 0, 107)";
+                square.style.borderRight = "1px solid rgb(214, 0, 107)";
+                square.style.borderBottom = "1px solid rgb(214, 0, 107)";
                 break;
             case 4:
-                square.style.borderTop = "1px solid black";
-                square.style.borderBottom = "1px solid black";
+                square.style.borderTop = "1px solid rgb(214, 0, 107)";
+                square.style.borderBottom = "1px solid rgb(214, 0, 107)";
                 break;
             case 5:
-                square.style.borderTop = "1px solid black";
-                square.style.borderLeft = "1px solid black";
-                square.style.borderBottom = "1px solid black";
+                square.style.borderTop = "1px solid rgb(214, 0, 107)";
+                square.style.borderLeft = "1px solid rgb(214, 0, 107)";
+                square.style.borderBottom = "1px solid rgb(214, 0, 107)";
                 break;
             case 6:
-                square.style.borderRight = "1px solid black";
+                square.style.borderRight = "1px solid rgb(214, 0, 107)";
                 break;
             case 8:
-                square.style.borderLeft = "1px solid black";
+                square.style.borderLeft = "1px solid rgb(214, 0, 107)";
                 break;
         }
         gridContainer.appendChild(square);

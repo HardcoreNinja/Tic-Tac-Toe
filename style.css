@@ -11,7 +11,7 @@
 
 #container {
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 7fr;
     grid-template-areas:
         "navContainer"
         "contentContainer"
@@ -21,12 +21,12 @@
 
 #navContainer {
     grid-area: navContainer;
-    background: blue;
+    background: rgba(40, 40, 40, .9);
 }
 
 #contentContainer {
     grid-area: contentContainer;
-    background: orange;
+    background: rgb(36, 41, 46);
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -39,14 +39,13 @@
     max-width: 375px;
     max-height: 375px;
     place-content: center center;
-    background: magenta;
+    background: rgb(29, 33, 37);
 }
 
 .container {
     transition: 0.5s;
     width: 123px;
     height: 123px;
-    background: gray;
     display: flex;
     flex-flow: row nowrap;
     place-content: center center;
@@ -55,7 +54,7 @@
 }
 
 .container:hover {
-    background: cyan;
+    background: rgba(214, 0, 107, 0.5);
     background-size: cover;
 }
 
