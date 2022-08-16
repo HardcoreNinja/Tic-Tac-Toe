@@ -1,7 +1,22 @@
 let playerTurn = true;
-let playerWon = false;
+let winner = false;
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
+}
+
+let moves = [
+    "--", "--", "--",
+    "--", "--", "--",
+    "--", "--", "--"
+];
+
+function initMoves() {
+    moves = [
+        "--", "--", "--",
+        "--", "--", "--",
+        "--", "--", "--"
+    ];
+
 }
 
 // Get the modal
@@ -11,6 +26,12 @@ let modal = document.getElementById("myModal");
 let modalCloseButton = document.getElementsByClassName("close")[0];
 modalCloseButton.onclick = function () {
     modal.style.display = "none";
+    winner = false;
+    playerTurn = true;
+
+    const winText = document.querySelector(".winText");
+    while (winText.firstChild)
+        winText.removeChild(winText.firstChild);
 }
 
 
@@ -19,15 +40,25 @@ const player = (playerName, playerIcon) => {
     let name = playerName;
     let icon = playerIcon;
     let score = 0;
-    let moves = [
-        "--", "--", "--",
-        "--", "--", "--",
-        "--", "--", "--"
-    ];
     let blank = [];
     let opponent = [];
     let mine = [];
 
+    const draw = () => {
+        const text = document.createTextNode("Draw!");
+        const winText = document.querySelector(".winText");
+        winText.append(text);
+        modal.style.display = "flex";
+        winner = true;
+
+        const gridContainer = document.querySelector("#gridContainer");
+
+        while (gridContainer.firstChild)
+            gridContainer.removeChild(gridContainer.firstChild);
+
+        initMoves();
+        drawGrid();
+    }
 
     const filterBoard = () => {
 
@@ -55,6 +86,9 @@ const player = (playerName, playerIcon) => {
                     blank.push(i);
             }
         }
+
+        if(blank.length === 0)
+        draw();
     }
     const changeIcon = (newIcon) => {
         icon = newIcon;
@@ -72,8 +106,21 @@ const player = (playerName, playerIcon) => {
     }
 
     const wonGame = () => {
-        modal.style.display = "block";
-        playerWon = true;
+
+        const text = document.createTextNode(playerName + " Won!");
+        const winText = document.querySelector(".winText");
+        winText.append(text);
+        modal.style.display = "flex";
+        winner = true;
+
+        const gridContainer = document.querySelector("#gridContainer");
+
+        while (gridContainer.firstChild)
+            gridContainer.removeChild(gridContainer.firstChild);
+
+        initMoves();
+        drawGrid();
+
     }
 
     const checkForDefensiveMoves = () => {
@@ -739,13 +786,12 @@ const player = (playerName, playerIcon) => {
     return { name, icon, score, moves, analyzeMoves, checkForWinningMoves, changeIcon };
 }
 
-const player1 = player("Wake", "x");
+const player1 = player("Player", "x");
 const AI = player("AI", "o");
 
 function AITurn() {
 
-    if (!playerWon) {
-        AI.moves = player1.moves;
+    if (!winner) {
         AI.analyzeMoves();
         playerTurn = !playerTurn;
     }
@@ -757,16 +803,16 @@ function placeMarker() {
 
     if (playerTurn) {
 
-        if (player1.moves[this.id] === "--") {
+        if (moves[this.id] === "--") {
 
             if (player1.icon === "x")
                 this.style.backgroundImage = "url('x.svg')";
             else
                 this.style.backgroundImage = "url('o.svg')";
 
-            player1.moves[this.id] = player1.icon;
+            moves[this.id] = player1.icon;
 
-            player1.checkForWinningMoves(player1.moves);
+            player1.checkForWinningMoves(moves);
 
             playerTurn = !playerTurn;
             AITurn();
