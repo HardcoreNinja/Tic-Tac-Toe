@@ -729,12 +729,12 @@ const player = (playerName, playerIcon) => {
         }
     }
 
-    const checkForWinningMoves = (moves) => {
+    const checkForWinningMoves = () => {
 
         mine = [];
         for (let i = 0; i < moves.length; i++) {
 
-            if (moves[i] === icon)
+            if (moves[i] === player1.icon)
                 mine.push(i);
         }
 
@@ -812,7 +812,7 @@ function placeMarker() {
 
             moves[this.id] = player1.icon;
 
-            player1.checkForWinningMoves(moves);
+            player1.checkForWinningMoves();
 
             playerTurn = !playerTurn;
             AITurn();
