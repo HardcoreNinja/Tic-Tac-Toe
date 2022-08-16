@@ -83,6 +83,7 @@
     place-content: center center;
     place-items: center center;
     flex-flow: column nowrap;
+    max-height: 100vh;
 }
 
 #gridContainer {
