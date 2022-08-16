@@ -32,6 +32,12 @@ modalCloseButton.onclick = function () {
     const winText = document.querySelector(".winText");
     while (winText.firstChild)
         winText.removeChild(winText.firstChild);
+
+    while (gridContainer.firstChild)
+        gridContainer.removeChild(gridContainer.firstChild);
+
+    initMoves();
+    drawGrid();
 }
 
 
@@ -114,13 +120,6 @@ const player = (playerName, playerIcon) => {
         winner = true;
 
         const gridContainer = document.querySelector("#gridContainer");
-
-        while (gridContainer.firstChild)
-            gridContainer.removeChild(gridContainer.firstChild);
-
-        initMoves();
-        drawGrid();
-
     }
 
     const checkForDefensiveMoves = () => {
