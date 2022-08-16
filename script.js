@@ -87,8 +87,8 @@ const player = (playerName, playerIcon) => {
             }
         }
 
-        if(blank.length === 0)
-        draw();
+        if (blank.length === 0)
+            draw();
     }
     const changeIcon = (newIcon) => {
         icon = newIcon;
@@ -776,10 +776,13 @@ const player = (playerName, playerIcon) => {
 
     const analyzeMoves = () => {
         filterBoard();
-        if (opponent.length === 1)
-            randomMove();
-        else {
-            checkForOffensiveMoves();
+
+        if (!winner) {
+            if (opponent.length === 1)
+                randomMove();
+            else {
+                checkForOffensiveMoves();
+            }
         }
     }
 
